@@ -29,3 +29,10 @@ class Rating(models.Model):
         on_delete=models.CASCADE,
         verbose_name="The rated article",
     )
+    rating = IntegerField(
+        default=3,
+        validators=[
+            MaxValueValidator(5),
+            MinValueValidator(1)
+        ]
+     )
