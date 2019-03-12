@@ -1,6 +1,11 @@
 from django.db import models
+from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
+class Author(models.Model):
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    def __str__(self):
+        return self.first_name + " " + self.last_name
 
 
 class Article(models.Model):
@@ -8,6 +13,7 @@ class Article(models.Model):
     abstract = models.TextField(max_length=120)
     article = models.TextField()
     author = models.ForeignKey(
+    Author,
     on_delete=models.CASCADE,
     verbose_name="the author")
 
@@ -17,10 +23,9 @@ class Article(models.Model):
             sum += rating.value
         return sum/self.rating_set.count()
 
+    def __str__(self):
+        return self.title
 
-class Author(models.Model):
-    first_name = models.CharField(max_length=120)
-    last_name = models.CharField(max_length=120)
 
 
 class Rating(models.Model):
@@ -29,10 +34,12 @@ class Rating(models.Model):
         on_delete=models.CASCADE,
         verbose_name="The rated article",
     )
-    rating = IntegerField(
+    rating = models.IntegerField(
         default=3,
         validators=[
             MaxValueValidator(5),
             MinValueValidator(1)
         ]
      )
+    def __str__(self):
+        return "Rating: " + str(self.rating) + " for artikkel: " + str(self.article)

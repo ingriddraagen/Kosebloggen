@@ -1,0 +1,30 @@
+{% extends "Kosebloggen/base.html" %}
+
+{% block content %}
+<div class="center-align">
+    {% for article in article_list %}
+      <a href="{% url 'articles:detail' article.id %}">
+        <div class="center-align">
+          <div class="row">
+            <div class="col s12 m6 ">
+              <div class="card pink darken-1 z-depth-4 center-align ">
+                <div class="card-content white-text ">
+                  <span class="card-title">
+                    {{article}}
+                  </span>
+                  <p>
+                    <br>
+                    {{ article.abstract }}
+                  </p>
+                  <p class="pink-text text-lighten-4 right-align">
+                    Author: {{article.author}}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+{% endblock content %}
