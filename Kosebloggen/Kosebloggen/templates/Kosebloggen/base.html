@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="nb" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Compiled and minified JavaScript -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <title>Kosebloggen</title>
+  </head>
+  <body>
+    <div class="center-align">
+      {% load static %}
+      <a href="{% url 'articles:list' %}">
+      <img src="{% static "Kosebloggen/kosebloggen.png" %}" alt="Header image">
+      </a>
+      
+    </div>
+    <div class="container">
+
+    {% block content %}
+
+    {% endblock content %}
+  </div>
+  </body>
+</html>
