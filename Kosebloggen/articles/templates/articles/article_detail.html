@@ -4,10 +4,12 @@
   <h3 class="center-align">
     {{ object.title }}
   </h3>
-  <h4 class="center-align">
-    {{ object.abstract }}
-  </h4>
-  <p>
-    {{ object.article|linebreaks }}
-  </p>
+  <div class="row">
+    <div class="col s12 m10 l10 xl8 offset-m1 offset-l1 offset-xl2 ">
+      <h4 class="center-align grey-text">
+        {{ object.abstract }}
+      </h4>
+      <p>
+        {{ object.article|linebreaks }}
+      </p>
 {% endblock content %}
